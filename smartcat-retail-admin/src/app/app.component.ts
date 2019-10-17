@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TerritoryStoreService } from './store/territory-store.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'hello-world'
   public name = "tanjo"
+  constructor(public territoriesStore: TerritoryStoreService) {}
 }
+

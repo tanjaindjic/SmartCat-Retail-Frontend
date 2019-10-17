@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TerritoryService } from './territory.service';
+import { Territory } from '../core/model/territory';
 
 
 @Component({
@@ -9,14 +10,11 @@ import { TerritoryService } from './territory.service';
 })
 export class TerritoriesComponent implements OnInit {
 
-  public territories = []
-  public errorMsg
-  constructor(private _territoryService: TerritoryService) { }
+  @Input() territory: Territory;
+  
+  constructor() {}
 
-  ngOnInit() {
-    this._territoryService.getTerritories()
-        .subscribe(data => this.territories = data,
-                    error => this.errorMsg = error)
-  }
+  ngOnInit() {}
+
 
 }

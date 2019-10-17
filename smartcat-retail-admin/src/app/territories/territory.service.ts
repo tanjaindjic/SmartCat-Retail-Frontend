@@ -11,20 +11,28 @@ import 'rxjs/add/observable/throw';
 })
 export class TerritoryService {
 
+  public API_ENDPOINT = "http://localhost:8096"
+
   constructor(private http: HttpClient) { }
 
-  private _url: string = "http://localhost:8096/territory"
-
-  getTerritories() :Observable<Territory[]>{
-    let retval = this.http.get<Territory[]>(this._url)
-                    .catch(this.errorHandler);
-    console.log(retval)
-    return retval;
-                    
+  url: string = "/territory"
+ 
+  index() {
+    return this.http.get<Territory[]>(`${this.API_ENDPOINT}/${this.url}`);
   }
 
-  errorHandler(error: HttpErrorResponse){
-    return Observable.throw(error.message || "Server Error")
+
+  create(Territory: Territory) {
+    return this.http.post<Territory>(`${this.API_ENDPOINT}/${this.url}`, Territory);
+  }
+
+  update(id: number, Territory: Territory) {
+    return this.http.put<Territory>(`${this.API_ENDPOINT}/${this.url}/${id}`, Territory);
+  }
+
+
+  remove(id: number) {
+    return this.http.delete(`${this.API_ENDPOINT}/${this.url}/${id}`);
   }
   
 }
