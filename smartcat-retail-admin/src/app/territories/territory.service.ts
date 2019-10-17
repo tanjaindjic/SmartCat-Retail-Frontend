@@ -14,19 +14,18 @@ export class TerritoryService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "/territory"
+  url: string = "territory"
  
   index() {
     return this.http.get<Territory[]>(`${this.API_ENDPOINT}/${this.url}`);
   }
 
-
-  create(Territory: Territory) {
-    return this.http.post<Territory>(`${this.API_ENDPOINT}/${this.url}`, Territory);
+  create(territory: Territory) {
+     return this.http.post(`${this.API_ENDPOINT}/${this.url}`, territory);
   }
 
-  update(id: number, Territory: Territory) {
-    return this.http.put<Territory>(`${this.API_ENDPOINT}/${this.url}/${id}`, Territory);
+  update(territory: Territory) {
+    return this.http.put<Territory>(`${this.API_ENDPOINT}/${this.url}/${territory.id}`, territory);
   }
 
 

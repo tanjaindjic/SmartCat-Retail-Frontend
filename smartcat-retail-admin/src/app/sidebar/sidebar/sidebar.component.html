@@ -1,0 +1,14 @@
+<h3>Territories</h3>
+      <div>
+         <a href="" (click)="newTerritory()">New Territory</a>
+      </div>
+      <div>
+         <a href="">New Shop</a>
+      </div>
+      <div>
+         <a href="">New Employee</a>
+      </div>
+      <app-territory
+         *ngFor="let t of territories"
+         [territory]="t">
+      </app-territory>

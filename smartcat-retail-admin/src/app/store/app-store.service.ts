@@ -4,7 +4,7 @@ import { Territory } from '../core/model/territory';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
+import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory, getUuid } from '@ngrx/data';
 import { BehaviorSubject } from 'rxjs';
 import { TerritoryService } from '../territories/territory.service';
 
@@ -38,10 +38,10 @@ export class AppStoreService {
   }
 
   addTerritory(city: string, postal: string, country: string) {
-    this.territories = [
-      ...this.territories, 
-      {id:null, city: city, postal: postal, country: country, shops:[]}
-    ];
+    let t = this.territoryService.create( {id:null, city: city, postal: postal, country: country, shops:[]}).toPromise()
+                                  .then(res => t = res);
+    this._territories.next([...this.territories, t]);
+   
   }
 
   updateTerritory(newT : Territory): void {
@@ -49,7 +49,7 @@ export class AppStoreService {
     oldT.city = oldT.city != newT.city ? newT.city : oldT.city;
     oldT.postal = oldT.postal != newT.postal ? newT.postal : oldT.postal;
     oldT.country = oldT.country != newT.country ? newT.country : oldT.country;
-  
+    this.territoryService.update(newT).toPromise();
   }
 
   

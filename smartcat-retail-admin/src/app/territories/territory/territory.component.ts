@@ -17,7 +17,11 @@ export class TerritoryComponent implements OnInit {
   ngOnInit() {}
 
   editTerritory(t: Territory) {
-    this.router.navigate([`/territory/${t.id}`], {relativeTo: this.route})
+    this.router.navigate([`/territory/id/${t.id}`])
     return false;
+  }
+
+  cancel(){
+    this.router.navigate(['/home'])
   }
 }

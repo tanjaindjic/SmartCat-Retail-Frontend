@@ -25,7 +25,7 @@ export class EditTerritoryComponent implements OnInit {
   }
 
   save(){
-    this.appStore.addTerritory
+     this.appStore.updateTerritory(this.selectedTerritory);
   }
 
 

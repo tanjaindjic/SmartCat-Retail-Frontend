@@ -1,8 +1,12 @@
 <div>
     <a href="">{{shop.name}}</a>
 </div>
-<app-employee *ngFor="let e of shop.employees"
-[employee]="e"
->
-</app-employee>
+<ul>
+    <li  *ngFor="let e of shop.employees">
+        <app-employee [employee]="e">
+        </app-employee>
+    </li>
+
+</ul>
+
 

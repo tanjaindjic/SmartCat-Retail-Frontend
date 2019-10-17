@@ -1,21 +1,22 @@
 <div>
     <div>
         <label for="cityInput">City:
-            <input id="cityInput" type="text" placeholder="Enter the city name" [(ngModel)]=selectedTerritory.city>
+            <input id="cityInput" type="text" placeholder="Enter the city name" [(ngModel)]=cityInput>
         </label>
     </div>
     <div>
         <label for="postalInput">Postal Code:
-            <input id="postalInput" type="text" placeholder="Enter the postal code" [(ngModel)]="selectedTerritory.postal">
+            <input id="postalInput" type="text" placeholder="Enter the postal code" [(ngModel)]="postalInput">
         </label>
     </div>
     <div>
         <label for="countryInput">Country:
-            <input id="countryInput" type="text" placeholder="Enter the country name" [(ngModel)]="selectedTerritory.country">
+            <input id="countryInput" type="text" placeholder="Enter the country name" [(ngModel)]="countryInput">
         </label>
     </div>
     <button (click)="save()">Save</button>
     <button (click)="cancel()">Cancel</button>
     <button>Delete</button>
-   
+    
 </div>
+    
