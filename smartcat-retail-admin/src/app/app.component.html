@@ -1,8 +1,9 @@
 <h3>Territories</h3>
 
-<app-territories 
+<app-territory 
+   (click)="e"
    *ngFor="let t of territoriesStore.territories"
    [territory]="t">
-</app-territories>
+</app-territory>
 
 <router-outlet></router-outlet>

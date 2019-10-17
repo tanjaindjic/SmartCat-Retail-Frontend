@@ -4,11 +4,11 @@ import { Territory } from '../core/model/territory';
 
 
 @Component({
-  selector: 'app-territories',
-  templateUrl: './territories.component.html',
-  styleUrls: ['./territories.component.css']
+  selector: 'app-territory',
+  templateUrl: './territory.component.html',
+  styleUrls: ['./territory.component.css']
 })
-export class TerritoriesComponent implements OnInit {
+export class TerritoryComponent implements OnInit {
 
   @Input() territory: Territory;
   

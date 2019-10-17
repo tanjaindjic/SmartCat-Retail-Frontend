@@ -10,11 +10,15 @@ import { EntityDataModule } from '@ngrx/data';
 import { entityConfig } from './store/entity-metadata';
 import { reducers, metaReducers } from './reducers';
 import { AppEffects } from './app.effects';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { ShopComponent } from './shops/shops/shop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    ShopComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
