@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TerritoryStoreService } from './store/territory-store.service';
+import { AppStoreService } from './store/app-store.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,7 @@ import { TerritoryStoreService } from './store/territory-store.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hello-world'
-  public name = "tanjo"
-  constructor(public territoriesStore: TerritoryStoreService) {}
+  
+  constructor(public appStore: AppStoreService) {}
 }
 

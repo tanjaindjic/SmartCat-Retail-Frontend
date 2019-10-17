@@ -12,7 +12,7 @@ import { TerritoryService } from '../territories/territory.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TerritoryStoreService {
+export class AppStoreService {
 
     constructor(private territoryService: TerritoryService) {
         this.fetchAll()
@@ -29,6 +29,10 @@ export class TerritoryStoreService {
     return this._territories.getValue();
   }
 
+  getTerritory(id: number): Territory {
+    return this._territories.getValue().find(t => t.id === id);
+  }
+
   set territories(val: Territory[]) {
     this._territories.next(val);
   }
@@ -40,18 +44,18 @@ export class TerritoryStoreService {
     ];
   }
 
-  removeTodo(id: number) {
-    this.territories = this.territories.filter(t => t.id !== id);
+  updateTerritory(newT : Territory): void {
+    let oldT = this._territories.getValue().find(t => t.id === newT.id);
+    oldT.city = oldT.city != newT.city ? newT.city : oldT.city;
+    oldT.postal = oldT.postal != newT.postal ? newT.postal : oldT.postal;
+    oldT.country = oldT.country != newT.country ? newT.country : oldT.country;
+  
   }
 
-  // private _url: string = "http://localhost:8096/territory"
-
-  // getTerritories() :Observable<Territory[]>{
-  //   let retval = this.http.get<Territory[]>(this._url)
-  //                   .catch(this.errorHandler);
-  //   console.log(retval)
-  //   return retval;
-                    
+  
+  removeTerritory(id: number) {
+    this.territories = this.territories.filter(t => t.id !== id);
+  }
 
   
 }

@@ -1,9 +1,21 @@
-<h3>Territories</h3>
-
-<app-territory 
-   (click)="e"
-   *ngFor="let t of territoriesStore.territories"
-   [territory]="t">
-</app-territory>
-
-<router-outlet></router-outlet>
+<div class="container">
+   <aside>
+      <h3>Territories</h3>
+      <div>
+         <a href="" (click)="newTerritory()">New Territory</a>
+      </div>
+      <div>
+         <a href="">New Shop</a>
+      </div>
+      <div>
+         <a href="">New Employee</a>
+      </div>
+      <app-territory
+         *ngFor="let t of appStore.territories"
+         [territory]="t">
+      </app-territory>
+   </aside>
+   <main>
+      <router-outlet></router-outlet>
+   </main>
+</div>

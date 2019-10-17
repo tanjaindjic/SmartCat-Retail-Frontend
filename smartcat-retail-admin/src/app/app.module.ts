@@ -11,14 +11,17 @@ import { entityConfig } from './store/entity-metadata';
 import { reducers, metaReducers } from './reducers';
 import { AppEffects } from './app.effects';
 import { EmployeeComponent } from './employees/employee/employee.component';
-import { ShopComponent } from './shops/shops/shop.component';
+import { ShopComponent } from './shops/shop/shop.component';
+import { TerritoryComponent } from './territories/territory/territory.component';
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     ShopComponent,
-    EmployeeComponent
+    EmployeeComponent, 
+    TerritoryComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
