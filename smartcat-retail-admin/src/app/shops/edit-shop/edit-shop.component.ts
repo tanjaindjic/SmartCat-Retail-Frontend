@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AppStoreService } from 'src/app/store/app-store.service';
 import { ShopService } from '../shop.service';
 import { Shop } from 'src/app/core/model/shop';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-shop',
   templateUrl: './edit-shop.component.html',
-  styleUrls: ['./edit-shop.component.css']
+  styleUrls: ['./edit-shop.component.css', '../../territories/edit-territory/edit-territory.component.css']
 })
 export class EditShopComponent implements OnInit {
 
@@ -18,7 +18,8 @@ export class EditShopComponent implements OnInit {
   shopPhone;
   shopAddress;
   territories;
-  constructor(private appStore: AppStoreService, private shopService: ShopService, private route: ActivatedRoute) {
+  constructor(private appStore: AppStoreService, private shopService: ShopService, private route: ActivatedRoute, 
+              private router: Router) {
     this.appStore._territories.subscribe(
       val => this.territories = val
     )
@@ -47,8 +48,13 @@ export class EditShopComponent implements OnInit {
     this.appStore.updateShop( this.shop, this.selectedTerritory);
   }
 
+  cancel(){
+    this.router.navigate(['/home'])
+  }
+
   delete(){
     this.appStore.removeShop( this.shop.id);
+    this.cancel();
   }
 
 }

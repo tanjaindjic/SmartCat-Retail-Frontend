@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStoreService } from 'src/app/store/app-store.service';
 import { EmployeeService } from '../employee.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Shop } from 'src/app/core/model/shop';
 import { Territory } from 'src/app/core/model/territory';
 
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.css']
+  styleUrls: ['./edit-employee.component.css', '../../territories/edit-territory/edit-territory.component.css']
 })
 export class EditEmployeeComponent implements OnInit {
 
@@ -20,7 +20,8 @@ export class EditEmployeeComponent implements OnInit {
   age;
   position;
   selectedShop;
-  constructor(private appStore: AppStoreService, private employeeService: EmployeeService, private route: ActivatedRoute) {
+  constructor(private appStore: AppStoreService, private employeeService: EmployeeService, private route: ActivatedRoute,
+              private router: Router) {
     this.appStore.allShops();
     this.appStore._shops.subscribe(
       val => this.shops = val
@@ -54,7 +55,11 @@ export class EditEmployeeComponent implements OnInit {
 
   delete(){
     this.appStore.removeEmployee( this.employee.id);
+    this.cancel();
   }
 
+  cancel(){
+    this.router.navigate(['/home'])
+  }
 
 }
