@@ -21,9 +21,7 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    //this.getTerritories();
-  }
+  ngOnInit() {}
   
   getTerritories(){
     this.territoryService.index().subscribe(

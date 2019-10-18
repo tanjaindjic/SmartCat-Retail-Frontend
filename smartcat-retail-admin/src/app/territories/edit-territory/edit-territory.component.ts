@@ -10,9 +10,9 @@ import { AppStoreService } from 'src/app/store/app-store.service';
 export class EditTerritoryComponent implements OnInit {
   public selectedId;
   public selectedTerritory;
-  public newCity = "";
-  public newPostal = "";
-  public newCountry = "";
+  public newCity;
+  public newPostal;
+  public newCountry;
   constructor(public appStore: AppStoreService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -28,13 +28,7 @@ export class EditTerritoryComponent implements OnInit {
   cancel(){
     this.router.navigate(['/home'])
   }
-  onClickSubmit(formData) {
-    alert(JSON.stringify(formData));
-    this.selectedTerritory.city = formData.city;
-    this.selectedTerritory.postal = formData.postal;
-    this.selectedTerritory.country = formData.country;
-    this.appStore.updateTerritory(this.selectedTerritory);
-  }
+
 
   save(){
     this.selectedTerritory.city = this.newCity;
