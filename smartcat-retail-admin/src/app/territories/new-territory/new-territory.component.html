@@ -15,3 +15,21 @@
     <button type="submit">Save</button>
     <button type="button" (click)="cancel()">Cancel</button>
 </form>
+
+<div class="form-container">
+  <mat-form-field>
+      <label for="cityInput">
+        <input matInput name="cityInput" type="text" placeholder="Enter the city name" [(ngModel)]="cityInput">
+    </label>
+  </mat-form-field>
+<!-- 
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+</div>

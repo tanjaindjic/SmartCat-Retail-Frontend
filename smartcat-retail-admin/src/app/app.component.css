@@ -11,7 +11,5 @@
     background-color: rgb(225, 225, 228);
 }
 .main-content {
-    
-    display: flex;  
-    padding-left: 30px; 
+    width: 100%; 
 }
