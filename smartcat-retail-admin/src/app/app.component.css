@@ -1,15 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400&subset=latin,latin-ext);
+
 .container {
     height: 100%;
     font-size: 1.2rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: rgb(215, 217, 231);
 }
 
 .navbar {
-    background-color: rgb(40, 55, 139);
+    background-color: rgb(46, 61, 145);
+    border-bottom: 1px solid rgba(40, 54, 133, 0.4);
+    -webkit-box-shadow: 0px 5px 32px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 32px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 32px -9px rgba(0,0,0,0.75);
 }
 .sidebar {
-    width: 20%;
-    background-color: rgb(225, 225, 228);
+    width: 25%;
+    background-color: rgb(235, 235, 235);
 }
 .main-content {
     width: 100%; 
+}
+
+.navbar-img {
+    filter: sepia(100%) hue-rotate(190deg) saturate(500%);
+    width:100%;
+    max-width:60px;
+}
+.navbar-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 10px;
+}
+
+
+.company-module {
+    font-size: 1rem;
+}
+
+.company-name{
+    margin-bottom: -12px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
 }

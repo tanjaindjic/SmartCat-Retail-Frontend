@@ -2,20 +2,19 @@
     
 }
 .sidebar-button {
-    color: white;
     background-color: #3F51B5; 
-    padding: 15px 0 15px 10px;
-    border: 1px solid rgb(40, 55, 139);
+    padding: 15px 0 15px 20px;
+
 }
 
 .sidebar-button:hover, 
 .sidebar-button:focus {
-    background-color: rgb(87, 104, 201); 
+    background-color:rgb(78, 97, 206);
     cursor: pointer;
 }
 
 .sidebar-button a {
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
+    color:  rgb(225, 225, 225);
 }
