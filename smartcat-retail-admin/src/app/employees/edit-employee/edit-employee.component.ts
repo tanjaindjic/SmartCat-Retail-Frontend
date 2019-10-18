@@ -8,7 +8,7 @@ import { Territory } from 'src/app/core/model/territory';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.css', '../../territories/edit-territory/edit-territory.component.css']
+  styleUrls: ['./edit-employee.component.css', '../../shared/forms.css']
 })
 export class EditEmployeeComponent implements OnInit {
 

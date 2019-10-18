@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-shop',
   templateUrl: './new-shop.component.html',
-  styleUrls: ['./new-shop.component.css']
+  styleUrls: ['./new-shop.component.css', '../../shared/forms.css']
 })
 export class NewShopComponent implements OnInit {
 
@@ -30,6 +30,7 @@ export class NewShopComponent implements OnInit {
 
   save(){
     this.appStore.addShop(this.shopName, this.shopAddress, this.shopPhone, this.selectedTerritory);
+    this.cancel();
   }
 
 

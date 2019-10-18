@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-employee',
   templateUrl: './new-employee.component.html',
-  styleUrls: ['./new-employee.component.css']
+  styleUrls: ['./new-employee.component.css', '../../shared/forms.css']
 })
 export class NewEmployeeComponent implements OnInit {
 
@@ -31,6 +31,7 @@ export class NewEmployeeComponent implements OnInit {
 
   save(){
     this.appStore.addEmployee(this.firstName, this.lastName, this.age, this.position, this.selectedShop);
+    this.cancel();
   }
 
 }

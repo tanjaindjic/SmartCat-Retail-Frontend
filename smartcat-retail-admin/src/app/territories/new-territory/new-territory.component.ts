@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-new-territory',
   templateUrl: './new-territory.component.html',
-  styleUrls: ['./new-territory.component.css']
+  styleUrls: ['./new-territory.component.css',  '../../shared/forms.css']
 })
 export class NewTerritoryComponent implements OnInit {
 

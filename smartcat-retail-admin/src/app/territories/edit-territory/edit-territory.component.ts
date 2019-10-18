@@ -5,7 +5,7 @@ import { AppStoreService } from 'src/app/store/app-store.service';
 @Component({
   selector: 'app-edit-territory',
   templateUrl: './edit-territory.component.html',
-  styleUrls: ['./edit-territory.component.css']
+  styleUrls: ['./edit-territory.component.css',  '../../shared/forms.css']
 })
 export class EditTerritoryComponent implements OnInit {
   public selectedId;

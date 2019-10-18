@@ -1,26 +1,27 @@
-<h4>New Employee</h4>
-<form #new = "ngForm" (ngSubmit)="save()">
-    <label for="employeeFirstName">First Name:
-        <input name="employeeFirstNameInput" type="text" placeholder="Enter the first name" [(ngModel)]="firstName">
-    </label>
-    <br/>
-     <label for="employeeLastName">Last Name:
-        <input name="employeeLastName" type="text" placeholder="Enter the last name" [(ngModel)]="lastName"> 
-    </label>
-    <br/>
-    <label for="employeeAge">Age:
-        <input name="employeeAge" type="text" placeholder="Enter the age" [(ngModel)]="age">
-    </label>
-    <br/>
-    <label for="employeePosition">Phone:
-        <input name="employeePosition" type="text" placeholder="Enter the phone number" [(ngModel)]="position">
-    </label>
-    <br/>
-    <select [(ngModel)]="selectedShop" name="shopSelect">
-      <option *ngFor="let s of shops" [ngValue]="s.id">{{s.name}}</option>
-   </select>
-   <br/>
-    <button type="submit">Save</button>
-    <button type="button" (click)="cancel()">Cancel</button>
-    <button type="button" (click)="delete()">Delete</button>
-</form>
+<div class="main-content-container">
+    <h4>New Employee</h4>
+
+    <div class="form-container">
+        <mat-form-field>
+                <input matInput name="employeeFirstNameInput" type="text" placeholder="First Name" [(ngModel)]="firstName">
+        </mat-form-field>
+        <mat-form-field>
+               <input matInput name="employeeLastName" type="text" placeholder="Last Name" [(ngModel)]="lastName"> 
+        </mat-form-field>
+        <mat-form-field>
+                <input matInput name="employeeAge" type="text" placeholder="Age" [(ngModel)]="age">
+        </mat-form-field>
+        <mat-form-field>
+                <input matInput name="employeePosition" type="text" placeholder="Position" [(ngModel)]="position">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select [(ngModel)]="selectedShop" placeholder="Shop">
+            <mat-option *ngFor="let s of shops" [value]="s.id">{{s.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="button-container">
+        <button mat-flat-button color="primary" (click)="save()">Save</button>
+        <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+    </div>
+</div>

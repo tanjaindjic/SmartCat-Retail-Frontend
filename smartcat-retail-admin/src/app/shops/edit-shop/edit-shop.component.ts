@@ -7,7 +7,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 @Component({
   selector: 'app-edit-shop',
   templateUrl: './edit-shop.component.html',
-  styleUrls: ['./edit-shop.component.css', '../../territories/edit-territory/edit-territory.component.css']
+  styleUrls: ['./edit-shop.component.css', '../../shared/forms.css']
 })
 export class EditShopComponent implements OnInit {
 

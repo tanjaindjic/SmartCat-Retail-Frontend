@@ -1,35 +1,19 @@
-<h4>New Territory</h4>
-<form #new = "ngForm" (ngSubmit)="save()">
-    <label for="cityInput">City:
-        <input name="cityInput" type="text" placeholder="Enter the city name" [(ngModel)]="cityInput">
-    </label>
-    <br/>
-     <label for="postalInput">Postal Code:
-        <input name="postalInput" type="text" placeholder="Enter the postal code" [(ngModel)]="postalInput"> 
-    </label>
-    <br/>
-    <label for="countryInput">Country:
-        <input name="countryInput" type="text" placeholder="Enter the country name" [(ngModel)]="countryInput">
-    </label>
-    <br/>
-    <button type="submit">Save</button>
-    <button type="button" (click)="cancel()">Cancel</button>
-</form>
+<div class="main-content-container">
+    <h4>New Territory</h4>
 
-<div class="form-container">
-  <mat-form-field>
-      <label for="cityInput">
-        <input matInput name="cityInput" type="text" placeholder="Enter the city name" [(ngModel)]="cityInput">
-    </label>
-  </mat-form-field>
-<!-- 
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field> -->
+    <div class="form-container">
+        <mat-form-field>
+                <input matInput name="cityInput" type="text" placeholder="City" [(ngModel)]="cityInput">
+        </mat-form-field>
+        <mat-form-field>
+                <input matInput name="postalInput" type="text" placeholder="Postal Code" [(ngModel)]="postalInput"> 
+        </mat-form-field>
+        <mat-form-field>
+                <input matInput name="countryInput" type="text" placeholder="Country" [(ngModel)]="countryInput">
+        </mat-form-field>
+    </div>
+    <div class="button-container">
+        <button mat-flat-button color="primary" (click)="save()">Save</button>
+        <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+    </div>
 </div>
