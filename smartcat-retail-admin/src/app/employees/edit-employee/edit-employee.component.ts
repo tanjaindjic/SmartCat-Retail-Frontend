@@ -12,14 +12,15 @@ import { Territory } from 'src/app/core/model/territory';
 })
 export class EditEmployeeComponent implements OnInit {
 
-  shops;
-  selectedId;
-  employee;
-  firstName;
-  lastName;
-  age;
-  position;
-  selectedShop;
+  private shops;
+  private selectedId;
+  private employee;
+  private firstName;
+  private lastName;
+  private email;
+  private position;
+  private selectedShop;
+  
   constructor(private appStore: AppStoreService, private employeeService: EmployeeService, private route: ActivatedRoute,
               private router: Router) {
     this.appStore.allShops();
@@ -37,18 +38,18 @@ export class EditEmployeeComponent implements OnInit {
         this.employee = res.employee;
         this.firstName = this.employee.firstName;
         this.lastName = this.employee.lastName;
-        this.age = this.employee.age;
+        this.email = this.employee.email;
         this.position = this.employee.position;
         this.selectedShop = res.shopId;
       },
-      (error: any) => alert("error in edit-employee"))
+      (error: any) => this.router.navigate(['/home']))
     })
   }
 
   save(){
     this.employee.firstName = this.firstName;
     this.employee.lastName = this.lastName;
-    this.employee.age = this.age;
+    this.employee.email = this.email;
     this.employee.position = this.position;
     this.appStore.updateEmployee( this.employee, this.selectedShop);
   }

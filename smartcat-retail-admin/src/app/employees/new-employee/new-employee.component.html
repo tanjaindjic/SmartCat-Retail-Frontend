@@ -3,25 +3,25 @@
 
     <div class="form-container">
         <mat-form-field>
-                <input matInput name="employeeFirstNameInput" type="text" placeholder="First Name" [(ngModel)]="firstName">
+                <input matInput required name="employeeFirstNameInput" type="text" placeholder="First Name" [(ngModel)]="firstName">
         </mat-form-field>
         <mat-form-field>
-               <input matInput name="employeeLastName" type="text" placeholder="Last Name" [(ngModel)]="lastName"> 
+               <input matInput required name="employeeLastName" type="text" placeholder="Last Name" [(ngModel)]="lastName"> 
         </mat-form-field>
         <mat-form-field>
-                <input matInput name="employeeAge" type="text" placeholder="Age" [(ngModel)]="age">
+                <input matInput name="employeeEmail" type="text" placeholder="Email" [(ngModel)]="email">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="employeePosition" type="text" placeholder="Position" [(ngModel)]="position">
         </mat-form-field>
         <mat-form-field>
-            <mat-select [(ngModel)]="selectedShop" placeholder="Shop">
+            <mat-select required [(ngModel)]="selectedShop" placeholder="Shop">
             <mat-option *ngFor="let s of shops" [value]="s.id">{{s.name}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="button-container">
-        <button mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="!(firstName && lastName && selectedShop)" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

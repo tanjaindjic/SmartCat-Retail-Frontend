@@ -12,6 +12,7 @@ export class NewTerritoryComponent implements OnInit {
   private cityInput;
   private postalInput;
   private countryInput; 
+  
   constructor(public appStore: AppStoreService, private router: Router, private route: ActivatedRoute) { }
 
 

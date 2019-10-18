@@ -3,7 +3,7 @@
 
     <div class="form-container">
         <mat-form-field>
-                <input matInput name="shopNameInput" type="text" placeholder="Name" [(ngModel)]="shopName">
+                <input matInput required name="shopNameInput" type="text" placeholder="Name" [(ngModel)]="shopName">
         </mat-form-field>
         <mat-form-field>
                <input matInput name="addressInput" type="text" placeholder="Address" [(ngModel)]="shopAddress">  
@@ -12,13 +12,13 @@
                 <input matInput name="phoneInput" type="text" placeholder="Phone" [(ngModel)]="shopPhone">
         </mat-form-field>
         <mat-form-field>
-            <mat-select [(ngModel)]="selectedTerritory" placeholder="Territory">
+            <mat-select required [(ngModel)]="selectedTerritory" placeholder="Territory">
             <mat-option *ngFor="let t of territories" [value]="t.id">{{t.city}}, {{t.country}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="button-container">
-        <button mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="!(shopName && selectedTerritory)" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

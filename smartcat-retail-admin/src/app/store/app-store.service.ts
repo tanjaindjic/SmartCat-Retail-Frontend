@@ -94,8 +94,8 @@ export class AppStoreService {
   
   }
 
-  addEmployee(firstName: string, lastName: string, age: number, position: string, shopId: number) {
-    this.employeeService.create( {id:null, firstName: firstName, lastName: lastName, age: age, position: position}, shopId)
+  addEmployee(firstName: string, lastName: string, email: string, position: string, shopId: number) {
+    this.employeeService.create( {id:null, firstName: firstName, lastName: lastName, email: email, position: position}, shopId)
                           .toPromise()
                           .then(res => this.fetchAll())
   }

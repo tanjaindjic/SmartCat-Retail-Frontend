@@ -15,6 +15,7 @@ export class NewShopComponent implements OnInit {
   private shopAddress;
   private shopPhone;
   private selectedTerritory;
+  
   constructor(private appStore: AppStoreService, private router: Router) {
     this.appStore._territories.subscribe(
       val => this.territories = val

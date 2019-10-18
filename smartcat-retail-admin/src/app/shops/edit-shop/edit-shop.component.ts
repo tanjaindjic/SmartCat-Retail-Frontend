@@ -11,13 +11,13 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class EditShopComponent implements OnInit {
 
-  shop: Shop;
-  selectedId;
-  selectedTerritory;
-  shopName;
-  shopPhone;
-  shopAddress;
-  territories;
+  private shop: Shop;
+  private selectedId;
+  private selectedTerritory;
+  private shopName;
+  private shopPhone;
+  private shopAddress;
+  private territories;
   constructor(private appStore: AppStoreService, private shopService: ShopService, private route: ActivatedRoute, 
               private router: Router) {
     this.appStore._territories.subscribe(
@@ -36,7 +36,7 @@ export class EditShopComponent implements OnInit {
         this.shopPhone = this.shop.phone;
         this.selectedTerritory = res.territoryId;
       },
-      (error: any) => alert("error in edit-shop"))
+      (error) => this.router.navigate(['/home']))
     })
     
   }

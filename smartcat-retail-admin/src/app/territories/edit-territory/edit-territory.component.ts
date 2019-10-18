@@ -8,11 +8,13 @@ import { AppStoreService } from 'src/app/store/app-store.service';
   styleUrls: ['./edit-territory.component.css',  '../../shared/forms.css']
 })
 export class EditTerritoryComponent implements OnInit {
-  public selectedId;
-  public selectedTerritory;
-  public newCity;
-  public newPostal;
-  public newCountry;
+  
+  private selectedId;
+  private selectedTerritory;
+  private newCity;
+  private newPostal;
+  private newCountry;
+
   constructor(public appStore: AppStoreService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {

@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class NewEmployeeComponent implements OnInit {
 
-  shops;
-  firstName;
-  lastName;
-  age;
-  position;
-  selectedShop;
+  private shops;
+  private firstName;
+  private lastName;
+  private email;
+  private position;
+  private selectedShop;
+  
   constructor(private appStore: AppStoreService, private router: Router) {
     this.appStore.allShops();
     this.appStore._shops.subscribe(
@@ -30,7 +31,7 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   save(){
-    this.appStore.addEmployee(this.firstName, this.lastName, this.age, this.position, this.selectedShop);
+    this.appStore.addEmployee(this.firstName, this.lastName, this.email, this.position, this.selectedShop);
     this.cancel();
   }
 
