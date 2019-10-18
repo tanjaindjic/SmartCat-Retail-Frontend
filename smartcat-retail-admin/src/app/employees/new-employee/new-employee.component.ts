@@ -16,6 +16,7 @@ export class NewEmployeeComponent implements OnInit {
   position;
   selectedShop;
   constructor(private appStore: AppStoreService, private router: Router) {
+    this.appStore.allShops();
     this.appStore._shops.subscribe(
       val => this.shops = val
     )

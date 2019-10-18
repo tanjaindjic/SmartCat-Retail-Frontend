@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css', '../../territories/territory/territory.component.css']
 })
 export class EmployeeComponent implements OnInit {
 

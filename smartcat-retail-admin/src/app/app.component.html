@@ -1,8 +1,11 @@
-<div class="container">
-   <aside>
-      <app-sidebar></app-sidebar>
-   </aside>
-   <main>
+<mat-toolbar class="navbar">
+  <span>SmartCat Retail Admin Panel</span>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav opened mode="side" class="sidebar">
+     <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
       <router-outlet></router-outlet>
-   </main>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

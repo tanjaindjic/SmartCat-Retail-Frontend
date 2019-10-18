@@ -14,6 +14,8 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { ShopComponent } from './shops/shop/shop.component';
 import { TerritoryComponent } from './territories/territory/territory.component';
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MaterialModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([AppEffects]),
     EntityDataModule.forRoot(entityConfig),
@@ -38,7 +41,8 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

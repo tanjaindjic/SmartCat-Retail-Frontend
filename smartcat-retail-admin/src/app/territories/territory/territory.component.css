@@ -1,0 +1,33 @@
+.tree-container{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+a {
+    color: rgb(22, 22, 27);
+    text-decoration: none;
+    margin-top: 2px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+ li {
+     margin-top: 10px;
+ }
+
+
+i {
+  padding: 0 10px;
+}
+.item-name {
+    display: flex;
+}
+
+.item-name:hover a,
+.item-name:hover i, 
+.item-name:focus a,
+.item-name:focus i {
+    color: rgb(189, 53, 53);
+}

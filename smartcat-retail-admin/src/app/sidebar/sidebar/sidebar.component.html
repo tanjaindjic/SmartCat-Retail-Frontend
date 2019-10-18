@@ -1,14 +1,14 @@
-<h3>Territories</h3>
-      <div>
-         <a href="" (click)="newTerritory()">New Territory</a>
-      </div>
-      <div>
-         <a href="" (click)="newShop()">New Shop</a>
-      </div>
-      <div>
-         <a href="" (click)="newEmployee()">New Employee</a>
-      </div>
-      <app-territory
-         *ngFor="let t of territories"
-         [territory]="t">
-      </app-territory>
+<div class="sidebar-button-container">
+   <div class="sidebar-button" (click)="newTerritory()">
+      <a href="" >New Territory</a>
+   </div>
+   <div class="sidebar-button" (click)="newShop()">
+      <a href="" >New Shop</a>
+   </div>
+   <div class="sidebar-button" (click)="newEmployee()">
+      <a href="" >New Employee</a>
+   </div>
+</div>      
+<app-territory *ngFor="let t of territories" [territory]="t">
+   
+</app-territory>

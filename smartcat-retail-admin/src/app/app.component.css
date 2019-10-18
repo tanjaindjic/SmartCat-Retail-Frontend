@@ -1,7 +1,17 @@
 .container {
-    display: flex;
+    height: 100%;
+    font-size: 1.2rem;
 }
-aside{
+
+.navbar {
+    background-color: rgb(40, 55, 139);
+}
+.sidebar {
     width: 20%;
-    background-color: #cecece;
+    background-color: rgb(225, 225, 228);
+}
+.main-content {
+    
+    display: flex;  
+    padding-left: 30px; 
 }

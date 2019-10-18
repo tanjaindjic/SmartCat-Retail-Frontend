@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  styleUrls: ['./shop.component.css', '../../territories/territory/territory.component.css']
 })
 export class ShopComponent implements OnInit {
 

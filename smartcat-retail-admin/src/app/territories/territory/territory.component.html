@@ -1,9 +1,13 @@
+<div class="tree-container">
+    <div class="item-name territory-name">
+        <i class="material-icons">folder</i>
+        <a href="#" (click)="editTerritory(territory)"><strong>{{territory.city}}, {{territory.country}}</strong></a>
+    </div>
 
-<div><a href="#" (click)="editTerritory(territory)">{{territory.city}}, {{territory.country}}</a></div>
-
-<ul>
-    <li  *ngFor="let s of territory.shops">
-        <app-shop [shop]="s">
-        </app-shop>
-    </li>
-</ul>
+    <ul>
+        <li *ngFor="let s of territory.shops">
+            <app-shop [shop]="s">
+            </app-shop>
+        </li>
+    </ul>
+</div>

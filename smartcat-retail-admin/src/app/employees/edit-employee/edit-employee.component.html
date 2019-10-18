@@ -1,4 +1,5 @@
-<form #new = "ngForm" (ngSubmit)="save()">
+<h4>Edit Employee</h4>
+<form #edit = "ngForm" (ngSubmit)="save()">
     <label for="employeeFirstName">First Name:
         <input name="employeeFirstNameInput" type="text" placeholder="Enter the first name" [(ngModel)]="firstName">
     </label>
