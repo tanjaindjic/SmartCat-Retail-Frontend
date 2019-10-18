@@ -10,27 +10,24 @@ import 'rxjs/add/observable/throw';
 })
 export class TerritoryService {
 
-  public API_ENDPOINT = "http://localhost:8096"
+  public API_ENDPOINT = "http://localhost:8096/territory"
 
   constructor(private http: HttpClient) { }
-
-  url: string = "territory"
  
   index() {
-    return this.http.get<Territory[]>(`${this.API_ENDPOINT}/${this.url}`);
+    return this.http.get<Territory[]>(this.API_ENDPOINT);
   }
 
   create(territory: Territory) {
-     return this.http.post(`${this.API_ENDPOINT}/${this.url}`, territory);
+     return this.http.post(this.API_ENDPOINT, territory);
   }
 
   update(territory: Territory) {
-    return this.http.put<Territory>(`${this.API_ENDPOINT}/${this.url}/${territory.id}`, territory);
+    return this.http.put<Territory>(this.API_ENDPOINT + "/" + territory.id, territory);
   }
 
-
   remove(id: number) {
-    return this.http.delete(`${this.API_ENDPOINT}/${this.url}/${id}`);
+    return this.http.delete(this.API_ENDPOINT + "/" + id);
   }
   
 }

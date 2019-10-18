@@ -23,7 +23,8 @@ export class NewTerritoryComponent implements OnInit {
   }
 
   save(){
-     return this.appStore.addTerritory(this.cityInput, this.postalInput, this.countryInput);
+    this.appStore.addTerritory(this.cityInput, this.postalInput, this.countryInput);
+    this.cancel();
   }
 
 }

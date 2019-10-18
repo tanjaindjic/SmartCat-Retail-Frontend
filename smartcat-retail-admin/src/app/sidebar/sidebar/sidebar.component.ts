@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Territory } from 'src/app/core/model/territory';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppStoreService } from 'src/app/store/app-store.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,11 +12,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  territories: any[];
-  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute) { }
+  territories: Territory[];
+  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute,
+               private appStore: AppStoreService) {
+    this.appStore._territories.subscribe(
+      val => this.territories = val
+    )
+
+  }
 
   ngOnInit() {
-    this.getTerritories();
+    //this.getTerritories();
   }
   
   getTerritories(){

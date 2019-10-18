@@ -18,8 +18,7 @@ export class AppStoreService {
         this.fetchAll()
     }
     
-  private readonly _territories = new BehaviorSubject<Territory[]>([]);
-  entities$ = this._territories.asObservable();
+  public readonly _territories = new BehaviorSubject<Territory[]>([]);
 
   async fetchAll() {
     this.territories = await this.territoryService.index().toPromise();
@@ -38,9 +37,9 @@ export class AppStoreService {
   }
 
   addTerritory(city: string, postal: string, country: string) {
-    let t = this.territoryService.create( {id:null, city: city, postal: postal, country: country, shops:[]}).toPromise()
-                                  .then(res => t = res);
-    this._territories.next([...this.territories, t]);
+    this.territoryService.create( {id:null, city: city, postal: postal, country: country, shops:[]})
+                          .toPromise()
+                          .then(res => this.fetchAll())
    
   }
 
@@ -49,12 +48,15 @@ export class AppStoreService {
     oldT.city = oldT.city != newT.city ? newT.city : oldT.city;
     oldT.postal = oldT.postal != newT.postal ? newT.postal : oldT.postal;
     oldT.country = oldT.country != newT.country ? newT.country : oldT.country;
-    this.territoryService.update(newT).toPromise();
+    this.territoryService.update(newT).subscribe();
   }
 
   
   removeTerritory(id: number) {
-    this.territories = this.territories.filter(t => t.id !== id);
+    this.territoryService.remove(id)
+                          .toPromise()
+                          .then(res => this.fetchAll())
+    
   }
 
   
