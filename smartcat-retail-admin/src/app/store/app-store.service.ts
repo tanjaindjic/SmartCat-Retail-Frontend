@@ -7,6 +7,8 @@ import 'rxjs/add/observable/throw';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory, getUuid } from '@ngrx/data';
 import { BehaviorSubject } from 'rxjs';
 import { TerritoryService } from '../territories/territory.service';
+import { ShopService } from '../shops/shop.service';
+import { Shop } from '../core/model/shop';
 
 
 @Injectable({
@@ -14,7 +16,7 @@ import { TerritoryService } from '../territories/territory.service';
 })
 export class AppStoreService {
 
-    constructor(private territoryService: TerritoryService) {
+    constructor(private territoryService: TerritoryService, private shopService: ShopService) {
         this.fetchAll()
     }
     
@@ -59,6 +61,26 @@ export class AppStoreService {
     
   }
 
+  addShop(name: string, address: string, phone: string, territoryId: number) {
+    this.shopService.create( {id:null, name: name, address:address, phone: phone, employees:[]}, territoryId)
+                          .toPromise()
+                          .then(res => this.fetchAll())
+   
+  }
+
+  updateShop(shop: Shop, territoryId: number) {
+    this.shopService.update( shop, territoryId)
+                          .toPromise()
+                          .then(res => this.fetchAll())
+   
+  }
+
+  removeShop(id: number) {
+  this.shopService.remove(id)
+                        .toPromise()
+                        .then(res => this.fetchAll())
+  
+  }
   
 }
 

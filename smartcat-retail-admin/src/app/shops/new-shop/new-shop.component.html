@@ -1,0 +1,20 @@
+<form #new = "ngForm" (ngSubmit)="save()">
+    <label for="shopName">Name:
+        <input name="shopNameInput" type="text" placeholder="Enter the shop name" [(ngModel)]="shopName">
+    </label>
+    <br/>
+     <label for="addressInput">Address:
+        <input name="addressInput" type="text" placeholder="Enter the postal code" [(ngModel)]="shopAddress"> 
+    </label>
+    <br/>
+    <label for="phoneInput">Phone:
+        <input name="phoneInput" type="text" placeholder="Enter the country name" [(ngModel)]="shopPhone">
+    </label>
+    <br/>
+    <select [(ngModel)]="selectedTerritory" name="territorySelect">
+      <option *ngFor="let t of territories" [ngValue]="t.id">{{t.city}}, {{t.country}}</option>
+   </select>
+   <br/>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+</form>

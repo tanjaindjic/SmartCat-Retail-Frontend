@@ -31,12 +31,17 @@ export class SidebarComponent implements OnInit {
   }
 
   newTerritory(){
-    this.router.navigate([`/territory/new`])
+    this.router.navigate(["/territory/new"])
+    return false;
+  }
+
+  newShop(){
+    this.router.navigate(["/shop/new"])
     return false;
   }
 
   cancel(){
-    this.router.navigate(['/home'])
+    this.router.navigate(["/home"])
   }
 
 }

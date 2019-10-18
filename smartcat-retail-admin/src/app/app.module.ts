@@ -13,9 +13,7 @@ import { AppEffects } from './app.effects';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { ShopComponent } from './shops/shop/shop.component';
 import { TerritoryComponent } from './territories/territory/territory.component';
-import { HomeComponent } from './home/home/home.component';
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
-import { NewTerritoryComponent } from './territories/new-territory/new-territory.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,8 @@ import { NewTerritoryComponent } from './territories/new-territory/new-territory
     routingComponents,
     ShopComponent,
     EmployeeComponent, 
-    TerritoryComponent, HomeComponent, SidebarComponent, NewTerritoryComponent
+    TerritoryComponent, 
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
