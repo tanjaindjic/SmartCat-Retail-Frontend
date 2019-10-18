@@ -31,7 +31,7 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   save(){
-    this.appStore.addEmployee(this.firstName, this.lastName, this.email, this.position, this.selectedShop);
+    this.appStore.addEmployee(this.firstName.trim(), this.lastName.trim(), this.email.trim(), this.position.trim(), this.selectedShop);
     this.cancel();
   }
 

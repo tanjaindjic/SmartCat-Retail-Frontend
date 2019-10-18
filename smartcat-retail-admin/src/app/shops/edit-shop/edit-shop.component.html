@@ -3,7 +3,7 @@
 
     <div class="form-container">
         <mat-form-field>
-                <input matInput required name="shopNameInput" type="text" placeholder="Name" [(ngModel)]="shopName">
+                <input matInput required pattern="[a-zA-Z ]*" type="text" placeholder="Name" [(ngModel)]="shopName">
         </mat-form-field>
         <mat-form-field>
                <input matInput name="addressInput" type="text" placeholder="Address" [(ngModel)]="shopAddress">  

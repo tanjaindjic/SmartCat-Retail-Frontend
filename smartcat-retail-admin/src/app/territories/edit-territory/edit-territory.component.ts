@@ -33,9 +33,9 @@ export class EditTerritoryComponent implements OnInit {
 
 
   save(){
-    this.selectedTerritory.city = this.newCity;
-    this.selectedTerritory.postal = this.newPostal;
-    this.selectedTerritory.country = this.newCountry;
+    this.selectedTerritory.city = this.newCity.trim();
+    this.selectedTerritory.postal = this.newPostal.trim();
+    this.selectedTerritory.country = this.newCountry.trim();
     this.appStore.updateTerritory(this.selectedTerritory);
   }
 

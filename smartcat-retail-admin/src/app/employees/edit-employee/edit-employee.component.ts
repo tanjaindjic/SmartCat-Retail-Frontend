@@ -47,10 +47,10 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   save(){
-    this.employee.firstName = this.firstName;
-    this.employee.lastName = this.lastName;
-    this.employee.email = this.email;
-    this.employee.position = this.position;
+    this.employee.firstName = this.firstName.trim();
+    this.employee.lastName = this.lastName.trim();
+    this.employee.email = this.email.trim();
+    this.employee.position = this.position.trim();
     this.appStore.updateEmployee( this.employee, this.selectedShop);
   }
 

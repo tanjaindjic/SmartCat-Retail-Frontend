@@ -30,7 +30,7 @@ export class NewShopComponent implements OnInit {
   }
 
   save(){
-    this.appStore.addShop(this.shopName, this.shopAddress, this.shopPhone, this.selectedTerritory);
+    this.appStore.addShop(this.shopName.trim(), this.shopAddress.trim(), this.shopPhone.trim(), this.selectedTerritory);
     this.cancel();
   }
 

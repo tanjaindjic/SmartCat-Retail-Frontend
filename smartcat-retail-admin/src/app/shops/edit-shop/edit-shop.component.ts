@@ -42,9 +42,9 @@ export class EditShopComponent implements OnInit {
   }
 
   save(){
-    this.shop.name = this.shopName;
-    this.shop.address = this.shopAddress;
-    this.shop.phone = this.shopPhone;
+    this.shop.name = this.shopName.trim();
+    this.shop.address = this.shopAddress.trim();
+    this.shop.phone = this.shopPhone.trim();
     this.appStore.updateShop( this.shop, this.selectedTerritory);
   }
 
