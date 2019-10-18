@@ -9,6 +9,8 @@ import { BehaviorSubject } from 'rxjs';
 import { TerritoryService } from '../territories/territory.service';
 import { ShopService } from '../shops/shop.service';
 import { Shop } from '../core/model/shop';
+import { Employee } from '../core/model/employee';
+import { EmployeeService } from '../employees/employee.service';
 
 
 @Injectable({
@@ -16,14 +18,23 @@ import { Shop } from '../core/model/shop';
 })
 export class AppStoreService {
 
-    constructor(private territoryService: TerritoryService, private shopService: ShopService) {
+    constructor(private territoryService: TerritoryService, private shopService: ShopService, private employeeService: EmployeeService) {
         this.fetchAll()
     }
     
   public readonly _territories = new BehaviorSubject<Territory[]>([]);
+  public readonly _shops = new BehaviorSubject<Shop[]>([]);
 
   async fetchAll() {
     this.territories = await this.territoryService.index().toPromise();
+  }
+  
+  async allShops(){
+   this.shops = await this.shopService.getShops().toPromise();
+  }
+
+  set territories(val: Territory[]) {
+    this._territories.next(val);
   }
 
   get territories(): Territory[] {
@@ -34,8 +45,12 @@ export class AppStoreService {
     return this._territories.getValue().find(t => t.id === id);
   }
 
-  set territories(val: Territory[]) {
-    this._territories.next(val);
+  set shops(val: Shop[]) {
+    this._shops.next(val);
+  }
+
+  get shops(): Shop[] {
+    return this._shops.getValue();
   }
 
   addTerritory(city: string, postal: string, country: string) {
@@ -45,12 +60,8 @@ export class AppStoreService {
    
   }
 
-  updateTerritory(newT : Territory): void {
-    let oldT = this._territories.getValue().find(t => t.id === newT.id);
-    oldT.city = oldT.city != newT.city ? newT.city : oldT.city;
-    oldT.postal = oldT.postal != newT.postal ? newT.postal : oldT.postal;
-    oldT.country = oldT.country != newT.country ? newT.country : oldT.country;
-    this.territoryService.update(newT).subscribe();
+  updateTerritory(territory : Territory): void {
+    this.territoryService.update(territory).subscribe();
   }
 
   
@@ -60,6 +71,7 @@ export class AppStoreService {
                           .then(res => this.fetchAll())
     
   }
+
 
   addShop(name: string, address: string, phone: string, territoryId: number) {
     this.shopService.create( {id:null, name: name, address:address, phone: phone, employees:[]}, territoryId)
@@ -80,6 +92,26 @@ export class AppStoreService {
                         .toPromise()
                         .then(res => this.fetchAll())
   
+  }
+
+  addEmployee(firstName: string, lastName: string, age: number, position: string, shopId: number) {
+    this.employeeService.create( {id:null, firstName: firstName, lastName: lastName, age: age, position: position}, shopId)
+                          .toPromise()
+                          .then(res => this.fetchAll())
+  }
+  
+  updateEmployee(employee : Employee, shopId: number): void {
+    this.employeeService.update( employee, shopId)
+                          .toPromise()
+                          .then(res => this.fetchAll())
+  }
+
+  
+  removeEmployee(id: number) {
+    this.employeeService.remove(id)
+                        .toPromise()
+                        .then(res => this.fetchAll())
+    
   }
   
 }

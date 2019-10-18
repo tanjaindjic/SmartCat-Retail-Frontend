@@ -15,6 +15,10 @@ export class ShopService {
     return this.http.get<Shop>(this.API_ENDPOINT  + "/" + id);
   }
 
+  getShops() {
+    return this.http.get<Shop[]>(this.API_ENDPOINT);
+  }
+
   create(shop: Shop, id: number) {
      return this.http.post(this.API_ENDPOINT, {shop: shop, territoryId: id});
   }

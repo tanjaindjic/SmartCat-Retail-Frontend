@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from 'src/app/core/model/employee';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -10,9 +11,13 @@ export class EmployeeComponent implements OnInit {
 
   @Input() employee: Employee
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  editEmployee(e: Employee) {
+    this.router.navigate([`/employee/id/${e.id}`])
+    return false;
   }
 
 }

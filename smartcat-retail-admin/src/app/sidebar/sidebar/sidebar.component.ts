@@ -40,6 +40,11 @@ export class SidebarComponent implements OnInit {
     return false;
   }
 
+  newEmployee(){
+    this.router.navigate(["/employee/new"])
+    return false;
+  }
+
   cancel(){
     this.router.navigate(["/home"])
   }
