@@ -9,6 +9,6 @@
       <a href="" >New Employee</a>
    </div>
 </div>      
-<app-territory *ngFor="let t of territories" [territory]="t">
+<app-territory *ngFor="let t of territories | async" [territory]="t">
    
 </app-territory>

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { AppStoreService } from 'src/app/store/app-store.service';
+import { TerritoryService } from '../territory.service';
+import { Territory } from 'src/app/core/model/territory';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-edit-territory',
@@ -9,18 +11,21 @@ import { AppStoreService } from 'src/app/store/app-store.service';
 })
 export class EditTerritoryComponent implements OnInit {
   
-  private selectedId;
-  private selectedTerritory;
+  private selectedTerritory: Territory;
   private newCity;
   private newPostal;
   private newCountry;
 
-  constructor(public appStore: AppStoreService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private sharedService: SharedService, private router: Router, private route: ActivatedRoute, 
+              private territoryService: TerritoryService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.selectedId = parseInt(params.get('id'));
-      this.selectedTerritory = this.appStore.getTerritory(this.selectedId);
+      this.selectedTerritory = this.sharedService.territory;
+      if(this.selectedTerritory === undefined)
+        this.sharedService.home();
+        
+      this.sharedService.territory = undefined;
       this.newCity = this.selectedTerritory.city;
       this.newPostal = this.selectedTerritory.postal;
       this.newCountry = this.selectedTerritory.country;
@@ -28,20 +33,21 @@ export class EditTerritoryComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigate(['/home'])
+    this.sharedService.home();
   }
 
-
   save(){
-    this.selectedTerritory.city = this.newCity.trim();
-    this.selectedTerritory.postal = this.newPostal.trim();
-    this.selectedTerritory.country = this.newCountry.trim();
-    this.appStore.updateTerritory(this.selectedTerritory);
+    let territoryCopy = JSON.parse(JSON.stringify(this.selectedTerritory));
+  
+    territoryCopy.city = this.newCity.trim();
+    territoryCopy.postal = this.newPostal.trim();
+    territoryCopy.country = this.newCountry.trim();
+    this.territoryService.update(territoryCopy);
   }
 
   delete(){
-    this.appStore.removeTerritory(this.selectedId);
-    this.cancel();
+    this.territoryService.delete(this.selectedTerritory);
+    this.sharedService.home();
   }
 
 

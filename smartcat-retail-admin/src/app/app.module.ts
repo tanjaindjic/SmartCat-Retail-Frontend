@@ -16,6 +16,7 @@ import { TerritoryComponent } from './territories/territory/territory.component'
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { EntityStoreModule } from './store/app-store.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MaterialModule } from './material.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([AppEffects]),
     EntityDataModule.forRoot(entityConfig),
+    EntityStoreModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Territory } from 'src/app/core/model/territory';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppStoreService } from 'src/app/store/app-store.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,22 +11,30 @@ import { AppStoreService } from 'src/app/store/app-store.service';
 })
 export class SidebarComponent implements OnInit {
 
-  territories: Territory[];
-  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute,
-               private appStore: AppStoreService) {
-    this.appStore._territories.subscribe(
-      val => this.territories = val
-    )
+  territories: Observable<Territory[]>;
+  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute) {
+    this.territories = territoryService.entities$;
 
   }
 
-  ngOnInit() {}
-  
-  getTerritories(){
-    this.territoryService.index().subscribe(
-      (res: any) => this.territories = res,
-      (error: any) => alert("error in sidebar")
-    )
+  ngOnInit() {
+    this.getTerritories();
+  }
+ 
+  add(territory: Territory) {
+    this.territoryService.add(territory);
+  }
+ 
+  delete(territory: Territory) {
+    this.territoryService.delete(territory.id);
+  }
+ 
+  getTerritories() {
+    this.territoryService.getAll();
+  }
+ 
+  update(territory: Territory) {
+    this.territoryService.update(territory);
   }
 
   newTerritory(){
@@ -43,10 +50,6 @@ export class SidebarComponent implements OnInit {
   newEmployee(){
     this.router.navigate(["/employee/new"])
     return false;
-  }
-
-  cancel(){
-    this.router.navigate(["/home"])
   }
 
 }

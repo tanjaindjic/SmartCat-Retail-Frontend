@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AppStoreService } from 'src/app/store/app-store.service';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
+import { SharedService } from 'src/app/shared/shared.service';
+import { TerritoryService } from 'src/app/territories/territory.service';
+import { ShopService } from 'src/app/shops/shop.service';
 
 @Component({
   selector: 'app-new-employee',
@@ -16,23 +19,23 @@ export class NewEmployeeComponent implements OnInit {
   private position;
   private selectedShop;
   
-  constructor(private appStore: AppStoreService, private router: Router) {
-    this.appStore.allShops();
-    this.appStore._shops.subscribe(
-      val => this.shops = val
-    )
-   }
+  constructor(private router: Router, private employeeService: EmployeeService, private sharedService: SharedService, 
+              private territoryService: TerritoryService, private shopService: ShopService) {}
 
   ngOnInit() {
+    this.shopService.getAll().toPromise()
+      .then(res => this.shops = res);
   }
 
   cancel(){
-    this.router.navigate(['/home'])
+    this.sharedService.home();
   }
 
   save(){
-    this.appStore.addEmployee(this.firstName.trim(), this.lastName.trim(), this.email.trim(), this.position.trim(), this.selectedShop);
-    this.cancel();
+    this.employeeService.add({id: null, firstName: this.firstName, lastName: this.lastName, email: this.email, 
+      position: this.position, shop: this.selectedShop}).toPromise()
+      .then(res => this.territoryService.getAll());
+    this.sharedService.home();
   }
 
 }

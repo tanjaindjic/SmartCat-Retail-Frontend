@@ -13,7 +13,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-select required [(ngModel)]="selectedTerritory">
-            <mat-option *ngFor="let t of territories" [value]="t.id">{{t.city}}, {{t.country}}</mat-option>
+            <mat-option *ngFor="let t of territories | async" [value]="t.id">{{t.city}}, {{t.country}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>

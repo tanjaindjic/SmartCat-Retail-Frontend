@@ -5,5 +5,6 @@ export class Shop {
     name: string;
     address: string;
     phone: string;
-    employees: Employee[]
+    employees: Employee[];
+    territory: number
 }

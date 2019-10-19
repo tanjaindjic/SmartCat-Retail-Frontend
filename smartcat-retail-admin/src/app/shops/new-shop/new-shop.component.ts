@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AppStoreService } from 'src/app/store/app-store.service';
 import { Territory } from 'src/app/core/model/territory';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/shared.service';
+import { TerritoryService } from 'src/app/territories/territory.service';
+import { ShopService } from '../shop.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-new-shop',
@@ -10,28 +13,29 @@ import { Router } from '@angular/router';
 })
 export class NewShopComponent implements OnInit {
 
-  territories: Territory[];
+  territories: Observable<Territory[]>;
   private shopName;
   private shopAddress;
   private shopPhone;
   private selectedTerritory;
   
-  constructor(private appStore: AppStoreService, private router: Router) {
-    this.appStore._territories.subscribe(
-      val => this.territories = val
-    )
+  constructor(private router: Router, private sharedService: SharedService, private territoryService: TerritoryService,
+              private shopService: ShopService) {
+              this.territories = territoryService.entities$;
+    
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   cancel(){
-    this.router.navigate(['/home'])
+    this.sharedService.home();
   }
 
   save(){
-    this.appStore.addShop(this.shopName.trim(), this.shopAddress.trim(), this.shopPhone.trim(), this.selectedTerritory);
-    this.cancel();
+    this.shopService.add({id:null, name: this.shopName, address: this.shopAddress, phone: this.shopPhone, employees:[], 
+      territory: this.selectedTerritory}).toPromise()
+      .then(res => this.territoryService.getAll());
+    this.sharedService.home();
   }
 
 

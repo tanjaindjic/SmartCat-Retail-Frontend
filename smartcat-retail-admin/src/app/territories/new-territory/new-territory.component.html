@@ -13,7 +13,7 @@
         </mat-form-field>
     </div>
     <div class="button-container">
-        <button [disabled]="!(cityInput && countryInput.trim())"mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="!(cityInput && countryInput)"mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

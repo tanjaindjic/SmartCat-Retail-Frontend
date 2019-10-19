@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppStoreService } from 'src/app/store/app-store.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TerritoryService } from '../territory.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-new-territory',
@@ -13,19 +14,20 @@ export class NewTerritoryComponent implements OnInit {
   private postalInput;
   private countryInput; 
   
-  constructor(public appStore: AppStoreService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute ,
+              private sharedService: SharedService) { }
 
 
   ngOnInit() {
   }
 
   cancel(){
-    this.router.navigate(['/home'])
+    this.sharedService.home();
   }
 
   save(){
-    this.appStore.addTerritory(this.cityInput.trim(), this.postalInput.trim(), this.countryInput.trim());
-    this.cancel();
+    this.territoryService.add( {id:null, city: this.cityInput, postal: this.postalInput, country: this.countryInput, shops:[]});
+    this.sharedService.home();
   }
 
 }

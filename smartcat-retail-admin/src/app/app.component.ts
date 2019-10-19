@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppStoreService } from './store/app-store.service';
+import { SharedService } from './shared/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,10 @@ import { AppStoreService } from './store/app-store.service';
 })
 export class AppComponent {
   
-  constructor(public appStore: AppStoreService) {}
+  constructor(private sharedService: SharedService) {}
+
+  home() {
+    this.sharedService.home();
+  }
 }
 

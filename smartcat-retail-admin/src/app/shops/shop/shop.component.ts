@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Shop } from 'src/app/core/model/shop';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-shop',
@@ -11,7 +12,7 @@ export class ShopComponent implements OnInit {
 
   @Input() shop: Shop;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
   }

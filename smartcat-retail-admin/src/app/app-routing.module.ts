@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'shop/new', component: NewShopComponent },
   { path: 'shop/id/:id', component: EditShopComponent },
   { path: 'employee/new', component: NewEmployeeComponent },
-  { path: 'employee/id/:id', component: EditEmployeeComponent }
-  // { path: '**', component: PageNotFoundComponent}
+  { path: 'employee/id/:id', component: EditEmployeeComponent },
+  { path: '**', component: HomeComponent}
 ];
 
 @NgModule({
