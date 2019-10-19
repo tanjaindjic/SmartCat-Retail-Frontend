@@ -22,6 +22,7 @@ export class EditEmployeeComponent implements OnInit {
   private email = "";
   private position = "";
   private selectedShop;
+  private emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   
   constructor(private employeeService: EmployeeService, private route: ActivatedRoute, private territoryService: TerritoryService,
               private router: Router, private shopService: ShopService, private sharedService: SharedService) {
@@ -67,6 +68,10 @@ export class EditEmployeeComponent implements OnInit {
 
   cancel(){
     this.sharedService.home();
+  }
+
+  validateEmail(){
+    return (new RegExp(this.emailPattern).test(this.email.trim())) ? true : false;
   }
 
 }

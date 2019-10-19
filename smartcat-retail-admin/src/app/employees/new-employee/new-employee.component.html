@@ -9,7 +9,7 @@
                <input matInput required name="employeeLastName" type="text" placeholder="Last Name" [(ngModel)]="lastName"> 
         </mat-form-field>
         <mat-form-field>
-                <input matInput name="employeeEmail" type="email" placeholder="Email" [(ngModel)]="email">
+                <input matInput required name="employeeEmail" type="email" placeholder="Email" [(ngModel)]="email" [pattern]="emailPattern">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="employeePosition" type="text" placeholder="Position" [(ngModel)]="position">
@@ -21,7 +21,7 @@
         </mat-form-field>
     </form>
     <div class="button-container">
-        <button [disabled]="!(firstName.trim() && lastName.trim() && selectedShop)" mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="!(firstName.trim() && lastName.trim() &&email.trim() && validateEmail() && selectedShop)" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

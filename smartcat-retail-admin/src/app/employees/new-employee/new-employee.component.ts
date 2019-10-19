@@ -21,6 +21,7 @@ export class NewEmployeeComponent implements OnInit {
   private email = "";
   private position = "";
   private selectedShop;
+  private emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   
   constructor(private employeeService: EmployeeService, private sharedService: SharedService, 
               private territoryService: TerritoryService, private shopService: ShopService) {}
@@ -41,7 +42,7 @@ export class NewEmployeeComponent implements OnInit {
       id: null,
       firstName: this.firstName.trim(),
       lastName: this.lastName.trim(),
-      email: (this.email) ? this.email.trim() : "",
+      email: this.email.trim(),
       position: (this.position) ? this.position.trim() : "",
       shop: this.selectedShop
     }
@@ -50,8 +51,12 @@ export class NewEmployeeComponent implements OnInit {
     this.form.reset();
     this.firstName = "";
     this.lastName = "";
+    this.email = "";
   }
-  
+
+  validateEmail(){
+    return (new RegExp(this.emailPattern).test(this.email.trim())) ? true : false;
+  }
 
 }
 
