@@ -13,10 +13,10 @@ import { ShopService } from 'src/app/shops/shop.service';
 export class NewEmployeeComponent implements OnInit {
 
   private shops;
-  private firstName;
-  private lastName;
-  private email;
-  private position;
+  private firstName = "";
+  private lastName = "";
+  private email = "";
+  private position = "";
   private selectedShop;
   
   constructor(private router: Router, private employeeService: EmployeeService, private sharedService: SharedService, 
@@ -32,9 +32,16 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   save(){
-    this.employeeService.add({id: null, firstName: this.firstName, lastName: this.lastName, email: this.email, 
-      position: this.position, shop: this.selectedShop}).toPromise()
-      .then(res => this.territoryService.getAll());
+    let payload = {
+      id: null,
+      firstName: this.firstName.trim(),
+      lastName: this.lastName.trim(),
+      email: this.email.trim(),
+      position: this.position.trim(),
+      shop: this.selectedShop
+    }
+    
+    this.employeeService.add(payload);
     this.sharedService.home();
   }
 

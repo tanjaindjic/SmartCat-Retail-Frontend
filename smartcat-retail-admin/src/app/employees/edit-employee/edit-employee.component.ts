@@ -17,10 +17,10 @@ export class EditEmployeeComponent implements OnInit {
   private shops;
   private selectedId;
   private employee;
-  private firstName;
-  private lastName;
-  private email;
-  private position;
+  private firstName = "";
+  private lastName = "";
+  private email = "";
+  private position = "";
   private selectedShop;
   
   constructor(private employeeService: EmployeeService, private route: ActivatedRoute, private territoryService: TerritoryService,
@@ -56,13 +56,12 @@ export class EditEmployeeComponent implements OnInit {
     employeeCopy.email = this.email.trim();
     employeeCopy.position = this.position.trim();
     employeeCopy.shop = this.selectedShop;
-    this.employeeService.update(employeeCopy).toPromise()
-        .then(res => this.territoryService.getAll())
+
+    this.employeeService.update(employeeCopy);
   }
 
   delete(){
-    this.employeeService.delete(this.employee).toPromise()
-        .then(res => this.territoryService.getAll())
+    this.employeeService.delete(this.employee);
     this.sharedService.home();
   }
 

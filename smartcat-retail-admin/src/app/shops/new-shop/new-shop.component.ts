@@ -18,11 +18,11 @@ export class NewShopComponent implements OnInit {
   private shopAddress;
   private shopPhone;
   private selectedTerritory;
-  
+
   constructor(private router: Router, private sharedService: SharedService, private territoryService: TerritoryService,
               private shopService: ShopService) {
-              this.territories = territoryService.entities$;
-    
+
+    this.territories = territoryService.entities$;  
    }
 
   ngOnInit() {}
@@ -32,9 +32,16 @@ export class NewShopComponent implements OnInit {
   }
 
   save(){
-    this.shopService.add({id:null, name: this.shopName, address: this.shopAddress, phone: this.shopPhone, employees:[], 
-      territory: this.selectedTerritory}).toPromise()
-      .then(res => this.territoryService.getAll());
+    let payload = {
+      id: null, 
+      name: this.shopName.trim(), 
+      address: this.shopAddress.trim(), 
+      phone: this.shopPhone.trim(), 
+      employees:[], 
+      territory: this.selectedTerritory
+    }
+
+    this.shopService.add(payload);
     this.sharedService.home();
   }
 

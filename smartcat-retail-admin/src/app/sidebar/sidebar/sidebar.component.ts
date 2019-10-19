@@ -3,6 +3,10 @@ import { Observable } from 'rxjs';
 import { Territory } from 'src/app/core/model/territory';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Shop } from 'src/app/core/model/shop';
+import { Employee } from 'src/app/core/model/employee';
+import { ShopService } from 'src/app/shops/shop.service';
+import { EmployeeService } from 'src/app/employees/employee.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,8 +16,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   territories: Observable<Territory[]>;
-  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute) {
+
+  constructor(private territoryService: TerritoryService, private router: Router, private route: ActivatedRoute, 
+    private shopService: ShopService, private employeeService: EmployeeService) {
+
     this.territories = territoryService.entities$;
+    shopService.entities$.subscribe(res => this.getTerritories() );
+    employeeService.entities$.subscribe(res => this.getTerritories() );
 
   }
 

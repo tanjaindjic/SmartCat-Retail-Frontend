@@ -4,7 +4,6 @@ import { Shop } from 'src/app/core/model/shop';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TerritoryService } from 'src/app/territories/territory.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-shop',
@@ -20,8 +19,10 @@ export class EditShopComponent implements OnInit {
   private shopAddress;
   private territories;
   private selectedId;
+  
   constructor(private shopService: ShopService, private route: ActivatedRoute, private sharedService: SharedService,
               private router: Router, private territoryService: TerritoryService) {
+
     this.territories = territoryService.entities$;
   }
 
@@ -49,9 +50,8 @@ export class EditShopComponent implements OnInit {
     shopCopy.address = this.shopAddress.trim();
     shopCopy.phone = this.shopPhone.trim();
     shopCopy.territory = this.selectedTerritory;
-    this.shopService.update(shopCopy).toPromise()
-      .then(res => this.territoryService.getAll())
-    
+
+    this.shopService.update(shopCopy);
   }
 
   cancel(){
@@ -59,8 +59,7 @@ export class EditShopComponent implements OnInit {
   }
 
   delete(){
-    this.shopService.delete(this.shop).toPromise()
-      .then(res => this.territoryService.getAll())
+    this.shopService.delete(this.shop);
       this.sharedService.home();
   }
 

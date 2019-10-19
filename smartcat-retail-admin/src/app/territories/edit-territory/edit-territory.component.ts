@@ -42,6 +42,7 @@ export class EditTerritoryComponent implements OnInit {
     territoryCopy.city = this.newCity.trim();
     territoryCopy.postal = this.newPostal.trim();
     territoryCopy.country = this.newCountry.trim();
+    
     this.territoryService.update(territoryCopy);
   }
 
