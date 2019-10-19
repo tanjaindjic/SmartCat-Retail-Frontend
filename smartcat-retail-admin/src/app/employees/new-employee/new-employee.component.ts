@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { ShopService } from 'src/app/shops/shop.service';
 import { FormGroup } from '@angular/forms';
+import { validateEmptyFields } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-new-employee',
@@ -25,6 +25,7 @@ export class NewEmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private sharedService: SharedService, 
               private territoryService: TerritoryService, private shopService: ShopService) {}
 
+              
   ngOnInit() {
     this.shopService.getAll().toPromise()
       .then(res => this.shops = res);
@@ -35,6 +36,7 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   save(){
+    
     let payload = {
       id: null,
       firstName: this.firstName.trim(),
@@ -46,6 +48,11 @@ export class NewEmployeeComponent implements OnInit {
     
     this.employeeService.add(payload);
     this.form.reset();
+    this.firstName = "";
+    this.lastName = "";
   }
+  
 
 }
+
+

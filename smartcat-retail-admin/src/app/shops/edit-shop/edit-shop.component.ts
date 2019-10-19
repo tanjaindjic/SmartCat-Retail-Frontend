@@ -14,14 +14,14 @@ export class EditShopComponent implements OnInit {
 
   private shop: Shop;
   private selectedTerritory;
-  private shopName;
-  private shopPhone;
-  private shopAddress;
+  private shopName = "";
+  private shopPhone = "";
+  private shopAddress = "";
   private territories;
   private selectedId;
   
   constructor(private shopService: ShopService, private route: ActivatedRoute, private sharedService: SharedService,
-              private router: Router, private territoryService: TerritoryService) {
+              private territoryService: TerritoryService) {
 
     this.territories = territoryService.entities$;
   }

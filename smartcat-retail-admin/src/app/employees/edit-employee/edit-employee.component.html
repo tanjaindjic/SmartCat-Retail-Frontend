@@ -21,7 +21,7 @@
         </mat-form-field>
     </div>
     <div class="button-container">
-        <button [disabled]="!(firstName && lastName && email)" mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="!(firstName.trim() && lastName.trim() && email.trim())" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
         <button mat-flat-button color="warn" type="button" (click)="delete()">Delete</button>
     </div>

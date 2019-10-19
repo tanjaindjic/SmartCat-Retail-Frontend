@@ -14,4 +14,10 @@ export class SharedService {
     this.router.navigate(["/home"])
   }
 
+}export function validateEmptyFields(fields: string[]) {
+  return fields.forEach(f => {
+    if(!f.trim()){
+      return false; 
+    }
+  })
 }

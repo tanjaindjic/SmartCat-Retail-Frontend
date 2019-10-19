@@ -38,6 +38,8 @@ export class NewTerritoryComponent implements OnInit {
     
     this.territoryService.add(payload);
     this.form.reset();
+    this.cityInput = "";
+    this.countryInput = "";
 
   }
 

@@ -45,6 +45,7 @@ export class NewShopComponent implements OnInit {
 
     this.shopService.add(payload);
     this.form.reset();
+    this.shopName = "";
   }
 
 
