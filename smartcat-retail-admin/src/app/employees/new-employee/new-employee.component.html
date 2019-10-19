@@ -1,7 +1,7 @@
 <div class="main-content-container">
     <h4>New Employee</h4>
 
-    <div class="form-container">
+    <form #newEmployeeForm="ngForm" class="form-container">
         <mat-form-field>
                 <input matInput required name="employeeFirstNameInput" type="text" placeholder="First Name" [(ngModel)]="firstName">
         </mat-form-field>
@@ -15,11 +15,11 @@
                 <input matInput name="employeePosition" type="text" placeholder="Position" [(ngModel)]="position">
         </mat-form-field>
         <mat-form-field>
-            <mat-select required [(ngModel)]="selectedShop" placeholder="Shop">
+            <mat-select required name="selectedShop" [(ngModel)]="selectedShop" placeholder="Shop">
             <mat-option *ngFor="let s of shops" [value]="s.id">{{s.name}}</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
+    </form>
     <div class="button-container">
         <button [disabled]="!(firstName && lastName && selectedShop)" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>

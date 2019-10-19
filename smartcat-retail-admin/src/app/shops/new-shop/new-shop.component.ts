@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Territory } from 'src/app/core/model/territory';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { ShopService } from '../shop.service';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-new-shop',
@@ -13,14 +14,15 @@ import { Observable } from 'rxjs';
 })
 export class NewShopComponent implements OnInit {
 
+  @ViewChild('newShopForm', {static: false}) form: FormGroup; 
+
   territories: Observable<Territory[]>;
-  private shopName;
-  private shopAddress;
-  private shopPhone;
+  private shopName = "";
+  private shopAddress = "";
+  private shopPhone = "";
   private selectedTerritory;
 
-  constructor(private router: Router, private sharedService: SharedService, private territoryService: TerritoryService,
-              private shopService: ShopService) {
+  constructor(private sharedService: SharedService, private territoryService: TerritoryService, private shopService: ShopService) {
 
     this.territories = territoryService.entities$;  
    }
@@ -35,14 +37,14 @@ export class NewShopComponent implements OnInit {
     let payload = {
       id: null, 
       name: this.shopName.trim(), 
-      address: this.shopAddress.trim(), 
-      phone: this.shopPhone.trim(), 
+      address: (this.shopAddress) ? this.shopAddress.trim() : "", 
+      phone: (this.shopPhone) ? this.shopPhone.trim() : "", 
       employees:[], 
       territory: this.selectedTerritory
     }
 
     this.shopService.add(payload);
-    this.sharedService.home();
+    this.form.reset();
   }
 
 

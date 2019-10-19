@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { ShopService } from 'src/app/shops/shop.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-new-employee',
@@ -12,6 +13,8 @@ import { ShopService } from 'src/app/shops/shop.service';
 })
 export class NewEmployeeComponent implements OnInit {
 
+  @ViewChild('newEmployeeForm', {static: false}) form: FormGroup;
+  
   private shops;
   private firstName = "";
   private lastName = "";
@@ -19,7 +22,7 @@ export class NewEmployeeComponent implements OnInit {
   private position = "";
   private selectedShop;
   
-  constructor(private router: Router, private employeeService: EmployeeService, private sharedService: SharedService, 
+  constructor(private employeeService: EmployeeService, private sharedService: SharedService, 
               private territoryService: TerritoryService, private shopService: ShopService) {}
 
   ngOnInit() {
@@ -36,13 +39,13 @@ export class NewEmployeeComponent implements OnInit {
       id: null,
       firstName: this.firstName.trim(),
       lastName: this.lastName.trim(),
-      email: this.email.trim(),
-      position: this.position.trim(),
+      email: (this.email) ? this.email.trim() : "",
+      position: (this.position) ? this.position.trim() : "",
       shop: this.selectedShop
     }
     
     this.employeeService.add(payload);
-    this.sharedService.home();
+    this.form.reset();
   }
 
 }

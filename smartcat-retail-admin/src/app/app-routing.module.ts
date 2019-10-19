@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TerritoryComponent } from './territories/territory/territory.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditTerritoryComponent } from './territories/edit-territory/edit-territory.component';
 import { HomeComponent } from './home/home/home.component';
 import { NewTerritoryComponent } from './territories/new-territory/new-territory.component';
@@ -34,5 +32,5 @@ export const routingComponents = [HomeComponent,
                                   NewShopComponent,
                                   EditShopComponent, 
                                   EditEmployeeComponent,
-                                  NewEmployeeComponent,
-                                  PageNotFoundComponent]
+                                  NewEmployeeComponent
+                                ]
