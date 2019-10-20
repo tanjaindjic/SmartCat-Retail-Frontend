@@ -11,7 +11,7 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 })
 export class PhoneValidatorDirective implements Validator {
     validate(control: AbstractControl):  {[key: string]: any} | null {
-        if(control.value)
+        if(control.value && control.value.trim())
         return !(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/.test(control.value.trim())) ? {
             invalid: true
         } : null

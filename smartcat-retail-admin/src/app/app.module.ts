@@ -22,6 +22,7 @@ import { AlphabetValidatorDirective } from './shared/validators/alphabet-validat
 import { AlphanumericValidatorDirective } from './shared/validators/alphanumeric-validator.directive';
 import { AddressValidatorDirective } from './shared/validators/address-validator.directive';
 import { PhoneValidatorDirective } from './shared/validators/phone-validator.directive';
+import { EmptyValidatorDirective } from './shared/validators/empty-validator.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PhoneValidatorDirective } from './shared/validators/phone-validator.dir
     AlphabetValidatorDirective, 
     AlphanumericValidatorDirective, 
     AddressValidatorDirective, 
-    PhoneValidatorDirective
+    PhoneValidatorDirective, 
+    EmptyValidatorDirective
   ],
   imports: [
     BrowserModule,

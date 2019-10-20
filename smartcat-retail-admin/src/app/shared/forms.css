@@ -26,3 +26,45 @@
 button {
     margin: 10px 10px 0 0;
 }
+
+.territoryCity.ng-dirty.ng-invalid::after,
+.territoryCountry.ng-dirty.ng-invalid::after,
+.shopName.ng-dirty.ng-invalid::after,
+.shopPhone.ng-dirty.ng-invalid::after,
+.empFirstName.ng-dirty.ng-invalid::after,
+.empEmail.ng-dirty.ng-invalid::after,
+.empLastName.ng-dirty.ng-invalid::after
+ {
+    font-size: 0.8rem;
+    position: relative;
+    top: -20px;
+    color: rgb(189, 53, 53);
+}
+
+.territoryCity.ng-dirty.ng-invalid::after {
+    content: "Enter a valid city name."
+}
+
+.territoryCountry.ng-dirty.ng-invalid::after {
+    content: "Enter a valid country name."
+}
+
+.shopName.ng-dirty.ng-invalid::after{
+    content: "Enter a valid name."
+}
+
+.shopPhone.ng-dirty.ng-invalid::after {
+    content: "Enter a valid phone number."
+}
+
+.empFirstName.ng-dirty.ng-invalid::after { 
+    content: "Enter a valid name.";
+}
+
+.empLastName.ng-dirty.ng-invalid::after {
+    content: "Enter a valid last name.";
+}
+
+.empEmail.ng-dirty.ng-invalid::after{
+    content: "Enter a valid email address."
+}

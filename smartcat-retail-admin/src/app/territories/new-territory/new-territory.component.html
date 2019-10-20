@@ -2,14 +2,14 @@
     <h4>New Territory</h4>
 
     <form #newTerritoryForm="ngForm" class="form-container">
-        <mat-form-field>
+        <mat-form-field class="territoryCity">
                 <input matInput required alphabetValidator name="cityInput" type="text" placeholder="City" 
                 [(ngModel)]="cityInput" #city="ngModel">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="postalInput" type="text" placeholder="Postal Code" [(ngModel)]="postalInput"> 
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="territoryCountry">
                 <input matInput required alphabetValidator name="countryInput" type="text" placeholder="Country" 
                 [(ngModel)]="countryInput" #country="ngModel">
         </mat-form-field>

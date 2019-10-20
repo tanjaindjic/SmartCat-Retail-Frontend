@@ -2,15 +2,15 @@
     <h4>New Employee</h4>
 
     <form #newEmployeeForm="ngForm" class="form-container">
-        <mat-form-field>
+        <mat-form-field class="empFirstName">
                 <input matInput required alphabetValidator name="employeeFirstNameInput" type="text" placeholder="First Name" 
                 [(ngModel)]="firstName" #empFirstName="ngModel">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="empLastName">
                <input matInput required alphabetValidator name="employeeLastName" type="text" placeholder="Last Name" 
                [(ngModel)]="lastName" #empLastName="ngModel"> 
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="empEmail">
                 <input matInput required emailValidator name="employeeEmail" type="email" placeholder="Email" 
                 [(ngModel)]="email" #empEmail="ngModel">
         </mat-form-field>
