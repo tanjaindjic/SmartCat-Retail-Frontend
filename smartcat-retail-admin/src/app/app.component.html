@@ -1,13 +1,16 @@
-<mat-toolbar class="navbar">
-  <img class="navbar-img" (click)="home()" src="/assets/images/logo.png">
-  <div class="navbar-title" (click)="home()">
-    <span class="company-name"><strong>SmartCat Retail</strong></span>
-    <span class="company-module">Administrator</span>
-  </div>
-</mat-toolbar>
-<mat-sidenav-container class="container">
-  <mat-sidenav opened mode="side" class="sidebar" disableClose>
-     <app-sidebar></app-sidebar>
-  </mat-sidenav>
-    <router-outlet></router-outlet>
-</mat-sidenav-container>
+<div class="container">
+  <mat-toolbar class="navbar">
+    <img class="navbar-img" (click)="home()" src="/assets/images/logo.png">
+    <div class="navbar-title" (click)="home()">
+      <span class="company-name"><strong>SmartCat Retail</strong></span>
+      <span class="company-module">Administrator</span>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container class="main">
+    <mat-sidenav opened mode="side" class="sidebar" disableClose>
+       <app-sidebar></app-sidebar>
+    </mat-sidenav>
+      <router-outlet></router-outlet>
+  </mat-sidenav-container>
+  
+</div>
