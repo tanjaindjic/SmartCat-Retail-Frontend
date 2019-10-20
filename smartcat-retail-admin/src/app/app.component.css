@@ -19,9 +19,6 @@
     background-color: rgb(235, 235, 235);
 }
 
-.sidebar-control {
-    
-}
 
 .main-content {
     width: 100%; 
@@ -31,6 +28,7 @@
     filter: sepia(100%) hue-rotate(190deg) saturate(500%);
     width:100%;
     max-width:60px;
+    cursor: pointer;
 }
 .navbar-title {
     font-family: 'Roboto Condensed', sans-serif;

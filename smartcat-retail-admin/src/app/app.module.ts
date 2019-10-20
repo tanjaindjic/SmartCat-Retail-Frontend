@@ -17,6 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EntityStoreModule } from './store/app-store.module';
+import { EmailValidatorDirective } from './shared/email-validator.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EntityStoreModule } from './store/app-store.module';
     ShopComponent,
     EmployeeComponent, 
     TerritoryComponent, 
-    SidebarComponent
+    SidebarComponent,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,
