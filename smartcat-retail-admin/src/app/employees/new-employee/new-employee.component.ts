@@ -4,7 +4,6 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { TerritoryService } from 'src/app/territories/territory.service';
 import { ShopService } from 'src/app/shops/shop.service';
 import { FormGroup } from '@angular/forms';
-import { validateEmptyFields } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-new-employee',

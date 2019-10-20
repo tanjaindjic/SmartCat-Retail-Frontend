@@ -17,7 +17,11 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EntityStoreModule } from './store/app-store.module';
-import { EmailValidatorDirective } from './shared/email-validator.directive';
+import { EmailValidatorDirective } from './shared/validators/email-validator.directive';
+import { AlphabetValidatorDirective } from './shared/validators/alphabet-validator.directive';
+import { AlphanumericValidatorDirective } from './shared/validators/alphanumeric-validator.directive';
+import { AddressValidatorDirective } from './shared/validators/address-validator.directive';
+import { PhoneValidatorDirective } from './shared/validators/phone-validator.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { EmailValidatorDirective } from './shared/email-validator.directive';
     EmployeeComponent, 
     TerritoryComponent, 
     SidebarComponent,
-    EmailValidatorDirective
+    EmailValidatorDirective, 
+    AlphabetValidatorDirective, 
+    AlphanumericValidatorDirective, 
+    AddressValidatorDirective, 
+    PhoneValidatorDirective
   ],
   imports: [
     BrowserModule,

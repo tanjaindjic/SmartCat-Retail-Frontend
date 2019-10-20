@@ -11,8 +11,8 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 })
 export class EmailValidatorDirective implements Validator {
     validate(control: AbstractControl):  {[key: string]: any} | null {
-        return !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(control.value)) ? {
-            invalidFormat: true
+        return !(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(control.value)) ? {
+            invalid: true
         } : null
     }
 }

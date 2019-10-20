@@ -3,17 +3,19 @@
 
     <form #newTerritoryForm="ngForm" class="form-container">
         <mat-form-field>
-                <input matInput required name="cityInput" type="text" placeholder="City" [(ngModel)]="cityInput">
+                <input matInput required alphabetValidator name="cityInput" type="text" placeholder="City" 
+                [(ngModel)]="cityInput" #city="ngModel">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="postalInput" type="text" placeholder="Postal Code" [(ngModel)]="postalInput"> 
         </mat-form-field>
         <mat-form-field>
-                <input matInput required name="countryInput" type="text" placeholder="Country" [(ngModel)]="countryInput">
+                <input matInput required alphabetValidator name="countryInput" type="text" placeholder="Country" 
+                [(ngModel)]="countryInput" #country="ngModel">
         </mat-form-field>
     </form>
     <div class="button-container">
-        <button [disabled]="!(cityInput.trim() && countryInput.trim())" mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="city.errors?.invalid || country.errors?.invalid" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>

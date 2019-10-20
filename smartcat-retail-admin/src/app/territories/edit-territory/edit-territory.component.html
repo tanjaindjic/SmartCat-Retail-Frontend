@@ -3,17 +3,19 @@
 
     <div class="form-container">
         <mat-form-field>
-                <input matInput required name="cityInput" type="text" placeholder="City" [(ngModel)]="newCity">
+                <input matInput required alphabetValidator name="cityInput" type="text" placeholder="City" 
+                [(ngModel)]="newCity" #city="ngModel">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="postalInput" type="text" placeholder="Postal Code" [(ngModel)]="newPostal"> 
         </mat-form-field>
         <mat-form-field>
-                <input matInput required name="countryInput" type="text" placeholder="Country" [(ngModel)]="newCountry">
+                <input matInput required alphabetValidator name="countryInput" type="text" placeholder="Country" 
+                [(ngModel)]="newCountry" #country="ngModel">
         </mat-form-field>
     </div>
     <div class="button-container">
-        <button [disabled]="!(newCity.trim() && newCountry.trim())" mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="city.errors?.invalid || country.errors?.invalid" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
         <button mat-flat-button color="warn" type="button" (click)="delete()">Delete</button>
     </div>

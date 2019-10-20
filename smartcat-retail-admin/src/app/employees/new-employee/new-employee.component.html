@@ -3,14 +3,16 @@
 
     <form #newEmployeeForm="ngForm" class="form-container">
         <mat-form-field>
-                <input matInput required name="employeeFirstNameInput" type="text" placeholder="First Name" [(ngModel)]="firstName">
+                <input matInput required alphabetValidator name="employeeFirstNameInput" type="text" placeholder="First Name" 
+                [(ngModel)]="firstName" #empFirstName="ngModel">
         </mat-form-field>
         <mat-form-field>
-               <input matInput required name="employeeLastName" type="text" placeholder="Last Name" [(ngModel)]="lastName"> 
+               <input matInput required alphabetValidator name="employeeLastName" type="text" placeholder="Last Name" 
+               [(ngModel)]="lastName" #empLastName="ngModel"> 
         </mat-form-field>
         <mat-form-field>
                 <input matInput required emailValidator name="employeeEmail" type="email" placeholder="Email" 
-                [(ngModel)]="email" #employeeEmail="ngModel">
+                [(ngModel)]="email" #empEmail="ngModel">
         </mat-form-field>
         <mat-form-field>
                 <input matInput name="employeePosition" type="text" placeholder="Position" [(ngModel)]="position">
@@ -22,7 +24,7 @@
         </mat-form-field>
     </form>
     <div class="button-container">
-        <button [disabled]="!(firstName.trim() && lastName.trim() && !employeeEmail.errors?.invalidFormat && selectedShop)" mat-flat-button color="primary" (click)="save()">Save</button>
+        <button [disabled]="empFirstName.errors?.invalid || empEmail.errors?.invalid || empLastName.errors?.invalid || !selectedShop" mat-flat-button color="primary" (click)="save()">Save</button>
         <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
     </div>
 </div>
